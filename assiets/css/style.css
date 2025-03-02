@@ -18,3 +18,45 @@
    
 
 }
+
+.new_hotel {
+    transition: 0.5s ease-in-out;
+}
+.new_hotel:hover {
+   background-color: rgb(17, 116, 25);
+   border: none;
+  
+}
+.new_hotel:hover p {
+    color: white;
+    transition: 0.5s ease-in-out;
+}
+.new_hotel:hover img {
+    filter: invert(1);
+    transition: 0.5s ease-in-out;
+
+
+
+}
+
+.new_hotel:active {
+    animation: rebon 0.3s; /* Appliquer l'animation lors du clic */
+}
+
+@keyframes rebon {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.9); /* Agrandir le bouton */
+    }
+    100% {
+        transform: scale(1); /* Revenir à la taille d'origine */
+    }
+}
+
+
+
+
+
+
