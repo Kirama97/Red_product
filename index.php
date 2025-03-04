@@ -8,6 +8,11 @@ if (!isset($_SESSION['nom'])) {
     header("Location: connexion.php");
     exit();
 }
+
+  $nom_utilisateur = $_SESSION['nom'];
+
+  $voir_bienvenue = isset($_SESSION['bienvenue']) && $_SESSION['bienvenue'] === true;
+  unset($_SESSION['bienvenue']);
 ?>
 
 
@@ -18,6 +23,7 @@ if (!isset($_SESSION['nom'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="/Assiets/lib/animate/animate.min.css">
+
 
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
   
@@ -39,10 +45,23 @@ if (!isset($_SESSION['nom'])) {
       <?php include_once("slide.php")
       ?>
 
+
+
       <div class="dash w-full lg:w-5/6 h-full ">
 
           <?php include_once("header.php")
               ?>
+
+      <?php if ($voir_bienvenue): ?>
+            <div id="message_bienvenue" class="bg-green-500  text-center  left-[40%] text-white px-4 py-2 rounded-lg fixed top-5 transition-opacity duration-1000">
+              Bienvenue, <?php echo htmlspecialchars($nom_utilisateur); ?> ! 😊 
+              <p class="text-gray-700 mt-2">Vous êtes connecté sur votre compte admin.</p>
+
+           </div>
+
+       <?php endif; ?>
+  
+
 
           <div class="dash_bloc ">
               <div class="dash_bloc_titre max-md:text-center h-[10vh] shadow-sm px-10 py-4">
@@ -518,6 +537,18 @@ if (!isset($_SESSION['nom'])) {
 
 
   </main>
+
+
+
+  <script>
+       
+       setTimeout(() => {
+            let message = document.getElementById("message_bienvenue");
+            if (message) {
+                message.classList.add("opacity-0");
+            }
+        }, 3000);
+    </script>
 
      
  

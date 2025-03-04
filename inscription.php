@@ -17,7 +17,7 @@
     session_start();
     include_once "config.php";
 
-    $error = "";
+    $error_ajout = "";
 
     if (isset($_POST['bt_inscription'])) {
        
@@ -36,6 +36,7 @@
 
                 if ($insert) {
                     $_SESSION['nom'] = $nom;
+                    $_SESSION['bienvenue'] = true;
                     header("Location: index.php");
                     exit();
                 } else {

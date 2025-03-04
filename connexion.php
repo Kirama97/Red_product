@@ -17,22 +17,23 @@
     session_start();
     include_once "config.php";
 
-    $erreur = ""; // Initialisation de la variable erreur
+    $erreur = "";
 
     if (isset($_POST['bt_valider'])) {
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
             $email = mysqli_real_escape_string($con, $_POST['email']);
             $password = $_POST['password'];
 
-            // Vérifier si l'utilisateur existe
+           
             $req = mysqli_query($con, "SELECT * FROM user_admin WHERE email = '$email'") or die(mysqli_error($con));
 
             if (mysqli_num_rows($req) > 0) {
                 $row = mysqli_fetch_assoc($req);
 
-                // Vérifier le mot de passe
+               
                 if (password_verify($password, $row['password'])) {
                     $_SESSION['nom'] = $row['nom'];
+                    $_SESSION['bienvenue'] = true;
                     header("Location: index.php");
                     exit(); 
                 } else {

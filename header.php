@@ -38,10 +38,10 @@ $page = basename($_SERVER['PHP_SELF']);
 
                    </div>
 
-                   <div class=" rounded-full   relative">
+                   <a href="profil_admin.php" class=" rounded-full   relative">
                     <img class="w-7 h-7 md:w-9 md:h-9  rounded-full" src="http://localhost/Red_product/assiets/images/profil.png" alt="" srcset="">
                     <span class="absolute bottom-0 border-1 border-white right-1 rounded-full block w-2 h-2  bg-green-300"></span>
-                 </div>
+                   </a>
 
 
                  <a href="deconnexion.php" class="block" titre="Deconnecter">

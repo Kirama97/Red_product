@@ -13,7 +13,7 @@
 
 <body class="bg-[url(http://localhost/Red_product/assiets/images/red-bg.png)] bg-no-repeat bg-center flex items-center justify-center bg-cover w-full h-screen">
 
-<?php 
+<?php ""
     session_start();
     include_once "config.php";
 
@@ -36,6 +36,7 @@
 
                 if ($insert) {
                     $_SESSION['nom'] = $nom;
+                    $_SESSION['bienvenue'] = true;
                     header("Location: index.php");
                     exit();
                 } else {
