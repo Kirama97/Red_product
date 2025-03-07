@@ -4,6 +4,9 @@ $index = true;
 
 session_start();
 
+include_once "config.php";
+
+
 if (!isset($_SESSION['nom'])) {
     header("Location: connexion.php");
     exit();
@@ -11,8 +14,15 @@ if (!isset($_SESSION['nom'])) {
 
   $nom_utilisateur = $_SESSION['nom'];
 
+
+    
+ 
   $voir_bienvenue = isset($_SESSION['bienvenue']) && $_SESSION['bienvenue'] === true;
   unset($_SESSION['bienvenue']);
+
+
+
+
 ?>
 
 
@@ -36,10 +46,10 @@ if (!isset($_SESSION['nom'])) {
 </head>
 
 
-<body >
+<body class="h-screen overflow-hidden ">
 
 
-  <main class="w-full h-screen flex">
+  <main class="w-full h-screen flex  ">
 
           
       <?php include_once("slide.php")
@@ -47,15 +57,15 @@ if (!isset($_SESSION['nom'])) {
 
 
 
-      <div class="dash w-full lg:w-5/6 h-full ">
+      <div class="dash w-full md:w-4/6 xl:w-5/6 h-full">
 
           <?php include_once("header.php")
               ?>
 
       <?php if ($voir_bienvenue): ?>
-            <div id="message_bienvenue" class="bg-green-500  text-center  left-[40%] text-white px-4 py-2 rounded-lg fixed top-5 transition-opacity duration-1000">
+            <div id="message_bienvenue" class="bg-green-500 text-[10px] md:text-md text-center  left-[22%] md:left-[40%] text-white px-4 py-2 rounded-lg fixed top-3 md:top-5 transition-opacity duration-1000">
               Bienvenue, <?php echo htmlspecialchars($nom_utilisateur); ?> ! 😊 
-              <p class="text-gray-700 mt-2">Vous êtes connecté sur votre compte admin.</p>
+              <p class="text-gray-700 mt-2 ">Vous êtes connecté sur votre compte admin.</p>
 
            </div>
 
@@ -65,11 +75,11 @@ if (!isset($_SESSION['nom'])) {
 
           <div class="dash_bloc ">
               <div class="dash_bloc_titre max-md:text-center h-[10vh] shadow-sm px-10 py-4">
-                <h1 class="text-lg md:text-2xl text-neutral-700">Bienvenue sur RED Product</h1>
+                <h1 class="text-lg md:text-xl text-neutral-700">Bienvenue sur RED Product</h1>
                 <p class="text-[12px] text-neutral-400">Une visualisation plus poussée de notre business.</p>
               </div>
 
-              <div class="dash-contenu h-[80vh] overflow-y-scroll bg-neutral-200 p-5 md:p-10 ">
+              <div class="dash-contenu h-[82vh] overflow-y-scroll bg-neutral-200 p-5 md:p-10 ">
 
                 <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-5 md:gap-y-10 max-md:max-auto">
                    
@@ -77,460 +87,47 @@ if (!isset($_SESSION['nom'])) {
                     <div class="dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
 
                       <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
+                        <img class="w-5 invert " src="http://localhost/Red_product/assiets/icone/people-outline.svg" alt="" srcset="">
                       </div>
                        
                       <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
+                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg"><?php echo  $nombre_user; ?></span> Utilisateurs</p>
+                         <p class="text-[12px] text-neutral-600">Utilisateurs inscrits sur la plateforme.</p>
                       </div>
 
                     </div>
 
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
+                    <div class="dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
 
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
+                      <div class=" rounded-full p-3 flex justify-center items-center bg-red-600 ">
+                        <img class="w-5  " src="http://localhost/Red_product/assiets/icone/mail_red.svg" alt="" srcset="">
                       </div>
                        
                       <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
+                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg"><?php echo  $nombre_message; ?></span> Messages</p>
+                         <p class="text-[12px] text-neutral-600">Messages disponible sur la plateforme.</p>
                       </div>
 
                     </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
+                    <div class="dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
 
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
+                      <div class=" rounded-full p-3 flex justify-center items-center bg-green-500 ">
+                        <img class="w-5  " src="http://localhost/Red_product/assiets/icone/bed.svg" alt="" srcset="">
                       </div>
                        
                       <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
+                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg"><?php echo  $nombre_hotels; ?></span> Hotels</p>
+                         <p class="text-[12px] text-neutral-600">Nombre d'hotel sur la plateforme.</p>
                       </div>
 
                     </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
+                   
                     
                 </div>
                  
               </div>
           </div>
-          <!-- <div class="dash_bloc ">
-              <div class="dash_bloc_titre max-md:text-center h-[10vh] shadow-sm px-10 py-4">
-                <h1 class="text-lg md:text-2xl text-neutral-700">Bienvenue sur RED Product</h1>
-                <p class="text-[12px] text-neutral-400">Une visualisation plus poussée de notre business.</p>
-              </div>
-
-              <div class="dash-contenu h-[80vh] overflow-y-scroll bg-neutral-200 p-5 md:p-10 ">
-
-                <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-5 md:gap-y-10 max-md:max-auto">
-                   
-
-                    <div class="dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    <div class=" dash_contenu_item p-5 bg-white rounded-xl flex items-center gap-3">
-
-                      <div class=" rounded-full p-3 flex justify-center items-center bg-amber-300 ">
-                        <img class="w-5 invert " src="/assiets/icone/mail-open-outline.svg" alt="" srcset="">
-                      </div>
-                       
-                      <div>
-                         <p class="text-neutral-700 text-sm"><span class="text-neutral-700 text-lg">125</span> formulaires</p>
-                         <p class="text-[12px] text-neutral-600">Information comptée au millimètre près.</p>
-                      </div>
-
-                    </div>
-                    
-                </div>
-                 
-              </div>
-          </div> -->
-
-          
+      
 
           
       </div>
@@ -548,6 +145,11 @@ if (!isset($_SESSION['nom'])) {
                 message.classList.add("opacity-0");
             }
         }, 3000);
+
+
+
+
+
     </script>
 
      

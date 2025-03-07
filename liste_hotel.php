@@ -6,6 +6,8 @@
 
     session_start();
 
+
+
     include_once("ajout_hotel.php");
 
 
@@ -16,10 +18,6 @@
 
     $nom_utilisateur = $_SESSION['nom'];
 
-
-    $result = mysqli_query($con, "SELECT COUNT(*) AS total FROM hotels");
-    $data = mysqli_fetch_assoc($result);
-    $nombre_hotels = $data['total'];
 
 
 
@@ -48,7 +46,7 @@
 </head>
 
 
-<body >
+<body  class="h-screen overflow-hidden ">
 
 
   <main class="w-full h-screen flex ">
@@ -59,59 +57,71 @@
 
 
 
-      <div class="dash w-full lg:w-5/6 h-full ">
+      <div class="dash w-full md:w-4/6 xl:w-5/6 h-full ">
 
           <?php include_once("header.php")
               ?>
 
           <div class="dash_bloc ">
               <div class="dash_bloc_titre flex justify-between items-center max-md:text-center h-[10vh] shadow-sm px-10 py-4">
-                <div class="flex items-center gap-3 bg-neutral-200 p-2 rounded-lg">
-                        <h1 class="text-lg md:text-xl text-neutral-700">Hôtels</h1>
-                        <p class="text-sm text-amber-400 md:text-xl"><?php echo $nombre_hotels; ?></p>
+                <div class="flex items-center gap-3 bg-white p-2 rounded-lg">
+                        <p class="text-sm text-amber-500 font-bold md:text-xl"><?php echo $nombre_hotels; ?></p>
+                        <h1 class="text-lg md:text-lg text-neutral-700">Hôtels</h1>
+                     
                 </div>
                 <button class="nouveau_hotel cursor-pointer flex items-center gap-3 shadow-sm border-1 border-neutral-300 py-2 px-4 rounded-lg">
-                    <img class="w-4 sm:w-5" src="http://localhost/Red_product/assiets/icone/add-outline.svg" alt="" srcset="">
-                    <p class="text-sm max-sm:hidden text-neutral-800">Créer un nouveau Hôtels  
+                    <img class="w-4 sm:w-4" src="http://localhost/Red_product/assiets/icone/add-outline.svg" alt="" srcset="">
+                    <p class="text-sm max-sm:hidden  text-neutral-800">Créer un nouveau Hôtels  
                 </button>
               </div>
 
-                <div class="dash-contenu h-[80vh] overflow-y-scroll bg-neutral-200 p-5 md:p-10 ">
+
+              <?php
+include_once "config.php";
+
+$search = isset($_GET['recherche']) ? trim($_GET['recherche']) : '';
+
+// Construire la requête avec filtre
+$sql = "SELECT * FROM hotels";
+if (!empty($search)) {
+    $sql .= " WHERE nom_hotel LIKE '%$search%' OR adresse LIKE '%$search%'";
+}
+$sql .= " ORDER BY id DESC";
+
+$requete = mysqli_query($con, $sql);
+?>
+
+                <div class="dash-contenu h-[82vh] overflow-y-scroll overflow-x-hidden bg-neutral-200 p-5 md:p-10 ">
 
                     <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-5 md:gap-y-10 max-md:max-auto">
            
 
 
-                     <?php
-                      include_once "config.php";
-
-    
-                      $requete = mysqli_query($con, "SELECT * FROM hotels ORDER BY id DESC");
-
-                      if (mysqli_num_rows($requete) > 0) {
-                          while ($row = mysqli_fetch_assoc($requete)) {
-                              ?>
-                              <div class="dash_contenu_item bg-white rounded-xl shadow-md overflow-hidden">
-                                  <img class="w-full h-50 object-cover" 
-                                      src="http://localhost/Red_product/assiets/image_bd/<?php echo htmlspecialchars($row['photo']); ?>" 
-                                      alt="Image de l'hôtel">
-                                  
-                                  <div class="p-5">
-                                      <p class="text-[12px] text-orange-500/70"><?php echo htmlspecialchars($row['adresse']); ?></p>
-                                      <h1 class="font-bold text-xl pt-2 pb-4"><?php echo htmlspecialchars($row['nom_hotel']); ?></h1>
-                                      <p class="text-sm"><?php echo number_format($row['tarif'], 0, ',', ' ') . ' ' . htmlspecialchars($row['devise']); ?> par nuit</p>
-                                      <a href="hotel_detail.php?id=<?php echo $row['id']; ?>" 
-                                        class="inline-block mt-3 px-4 py-2 bg-orange-500 text-white rounded-lg text-sm">
-                                          Voir plus
-                                      </a>
-                                  </div>
-                              </div>
-                              <?php
-                          }
-                      } else {
-                          echo '<p class="text-red-500 text-xl  " >Aucun hôtel trouvé.</p>';
-                      }
-                      ?>
+                    <?php
+        if (mysqli_num_rows($requete) > 0) {
+            while ($row = mysqli_fetch_assoc($requete)) {
+                ?>
+                <div class="dash_contenu_item bg-white rounded-xl shadow-md overflow-hidden">
+                    <img class="w-full h-50 object-cover" 
+                        src="http://localhost/Red_product/assiets/image_bd/<?php echo htmlspecialchars($row['photo']); ?>" 
+                        alt="Image de l'hôtel">
+                    
+                    <div class="py-5 px-3">
+                        <p class="text-[12px] text-orange-500/70"><?php echo htmlspecialchars($row['adresse']); ?></p>
+                        <h1 class="font-bold text-xl pt-2 pb-4"><?php echo htmlspecialchars($row['nom_hotel']); ?></h1>
+                        <p class="text-sm"><?php echo number_format($row['tarif'], 0, ',', ' ') . ' ' . htmlspecialchars($row['devise']); ?> par nuit</p>
+                        <a href="hotel_detail.php?id=<?php echo $row['id']; ?>" 
+                            class="inline-block mt-3 px-4 py-2 bg-orange-500 text-white rounded-lg text-sm">
+                            Voir plus
+                        </a>
+                    </div>
+                </div>
+                <?php
+            }
+        } else {
+            echo '<div class="text-red-500 md:w-[75vw]  h-[70vh] flex justify-center items-center  text-xl">Aucun hôtel trouvé.</div>';
+        }
+        ?>
                                         
                         
                     </div>
@@ -127,9 +137,9 @@
           <div class="modal  bg-white w-full md:w-[50%] max-md:m-[10%]  rounded-lg p-10 ">
 
               
-              <div class="modal_top flex gap-4 py-5 border-b-1 border-dashed border-neutral-400">
+              <div class="modal_top flex items-center gap-4 py-5 border-b-1 border-dashed border-neutral-400">
                   <button class="retour_add cursor-pointer "> 
-                    <img class="w-6 " src="http://localhost/Red_product/assiets/icone/arrow-left.svg" alt="" srcset="">
+                    <img class="w-7 " src="http://localhost/Red_product/assiets/icone/arrow-left_orange.svg" alt="" srcset="">
                   </button>
                   <h1 class="text-lg text-neutral-700 uppercase font-bold" >Créer un nouveau hôtel  </h1>
               </div>

@@ -33,7 +33,11 @@
                
                 if (password_verify($password, $row['password'])) {
                     $_SESSION['nom'] = $row['nom'];
+                    $_SESSION['user_id'] = $row['id'];
                     $_SESSION['bienvenue'] = true;
+                    $_SESSION['profil'] = $row['profil'] ?? '';
+                   
+
                     header("Location: index.php");
                     exit(); 
                 } else {

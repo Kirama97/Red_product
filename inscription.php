@@ -35,6 +35,9 @@
                 $insert = mysqli_query($con, "INSERT INTO user_admin(nom, email, password) VALUES ('$nom', '$email', '$password')");
 
                 if ($insert) {
+                    $user_id = mysqli_insert_id($con);
+
+                    $_SESSION['user_id'] = $user_id;
                     $_SESSION['nom'] = $nom;
                     $_SESSION['bienvenue'] = true;
                     header("Location: index.php");

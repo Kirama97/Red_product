@@ -6,11 +6,7 @@
   
 //   pop_up.classList.toggle("active");
 
-// });
-
-
-
-
+// c
 
 
 
