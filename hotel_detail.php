@@ -8,11 +8,11 @@ if (isset($_GET['id'])) {
     if (mysqli_num_rows($requete) > 0) {
         $row = mysqli_fetch_assoc($requete);
     } else {
-        echo "<p class='text-red-500 text-xl'>Hôtel non trouvé.</p>";
+        echo "<p class='text-red-500 text-xl text-center mt-10'>Hôtel non trouvé.</p>";
         exit;
     }
 } else {
-    echo "<p class='text-red-500 text-xl'>ID d'hôtel invalide.</p>";
+    echo "<p class='text-red-500 text-xl text-center mt-10'>ID d'hôtel invalide.</p>";
     exit;
 }
 ?>
@@ -25,20 +25,63 @@ if (isset($_GET['id'])) {
     <title><?php echo htmlspecialchars($row['nom_hotel']); ?> - Détails</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
-    <div class="max-w-4xl mx-auto p-5">
-        <div class="bg-white shadow-lg rounded-xl overflow-hidden">
-            <img class="w-full h-60 object-cover" 
-                 src="http://localhost/Red_product/assiets/image_bd/<?php echo htmlspecialchars($row['photo']); ?>" 
-                 alt="Image de l'hôtel">
-            <div class="p-5">
-                <h1 class="text-2xl font-bold"><?php echo htmlspecialchars($row['nom_hotel']); ?></h1>
-                <p class="text-gray-500"><?php echo htmlspecialchars($row['adresse']); ?></p>
-                <p class="text-lg font-semibold mt-2"><?php echo number_format($row['tarif'], 0, ',', ' ') . ' ' . htmlspecialchars($row['devise']); ?> par nuit</p>
-                <p class="mt-3 text-gray-700"><?php echo nl2br(htmlspecialchars($row['email_hotel'])); ?></p>
-                <a href="liste_hotel.php" class="inline-block mt-4 px-4 py-2 bg-orange-500 text-white rounded-lg text-sm">Retour</a>
+<body class="bg-gray-900 text-white">
+
+  
+    <div class="relative h-screen">
+        <img class="absolute inset-0 w-full h-full object-cover brightness-75"
+             src="http://localhost/Red_product/assiets/image_bd/<?php echo htmlspecialchars($row['photo']); ?>" 
+             alt="Image de l'hôtel">
+
+     
+        <div class="absolute inset-0 flex items-center justify-center p-6">
+            <div class="bg-white bg-opacity-90 rounded-2xl shadow-2xl max-w-4xl w-full p-8 text-gray-900">
+                <h1 class="text-3xl font-bold text-center mb-4"><?php echo htmlspecialchars($row['nom_hotel']); ?></h1>
+                
+                <p class="text-gray-500 text-center mb-4"><?php echo htmlspecialchars($row['adresse']); ?></p>
+                
+                <div class="flex justify-center space-x-4 mb-6">
+                    <span class="bg-orange-500 text-white px-4 py-2 rounded-lg text-lg font-semibold">
+                        <?php echo number_format($row['tarif'], 0, ',', ' ') . ' ' . htmlspecialchars($row['devise']); ?> / nuit
+                    </span>
+                </div>
+
+                <p class="text-gray-700 text-lg text-center"><?php echo nl2br(htmlspecialchars($row['email_hotel'])); ?></p>
+
+           
+                <div class="mt-6">
+                    <h2 class="text-xl font-semibold mb-3">Équipements & Services :</h2>
+                    <div class="grid grid-cols-2 gap-4 text-gray-700">
+                        <div class="flex items-center space-x-2">
+                            <span>🛏️</span> <span>Chambres de luxe</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span>🍽️</span> <span>Restaurant gastronomique</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span>🏊</span> <span>Piscine & Spa</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span>📶</span> <span>Wi-Fi haut débit</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span>🚗</span> <span>Parking gratuit</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span>🛎️</span> <span>Service 24/7</span>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="mt-8 text-center">
+                    <a href="liste_hotel.php" class="px-5 py-3 bg-orange-500 text-white rounded-lg text-lg font-semibold transition duration-300 hover:bg-orange-600">
+                        ⬅ Retour à la liste
+                    </a>
+                </div>
             </div>
         </div>
     </div>
+
 </body>
 </html>

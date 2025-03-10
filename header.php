@@ -61,7 +61,7 @@ $page = basename($_SERVER['PHP_SELF']);
                    <a href="profil_admin.php" class=" rounded-full   relative">
 
                    <?php
-                      $photo_profil = !empty($_SESSION['profil']) ? "assiets/image_profil/" . $_SESSION['profil'] : "assiets/images/default.jpg";
+                      $photo_profil = !empty($_SESSION['profil']) ? "assiets/image_profil/" . $_SESSION['profil'] : "assiets/image_profil/default.jpg";
                     ?>
           
                     <img class="w-7 h-7 md:w-8 md:h-8 object-cover rounded-full"  src="<?php echo $photo_profil; ?>" alt="Photo de profil">

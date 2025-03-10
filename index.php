@@ -63,9 +63,9 @@ if (!isset($_SESSION['nom'])) {
               ?>
 
       <?php if ($voir_bienvenue): ?>
-            <div id="message_bienvenue" class="bg-green-500 text-[10px] md:text-md text-center  left-[22%] md:left-[40%] text-white px-4 py-2 rounded-lg fixed top-3 md:top-5 transition-opacity duration-1000">
+            <div id="message_bienvenue" class="bg-green-500 text-[12px] md:text-md text-center  left-[15%] md:left-[40%] text-white px-4 py-2 rounded-lg fixed top-3 md:top-5 transition-opacity duration-1000">
               Bienvenue, <?php echo htmlspecialchars($nom_utilisateur); ?> ! 😊 
-              <p class="text-gray-700 mt-2 ">Vous êtes connecté sur votre compte admin.</p>
+              <p class="text-neutral-100 mt-2 ">Vous êtes connecté sur votre compte admin.</p>
 
            </div>
 
@@ -74,12 +74,12 @@ if (!isset($_SESSION['nom'])) {
 
 
           <div class="dash_bloc ">
-              <div class="dash_bloc_titre max-md:text-center h-[10vh] shadow-sm px-10 py-4">
+              <div class="dash_bloc_titre max-md:text-center h-[11vh] shadow-sm px-10 py-4">
                 <h1 class="text-lg md:text-xl text-neutral-700">Bienvenue sur RED Product</h1>
                 <p class="text-[12px] text-neutral-400">Une visualisation plus poussée de notre business.</p>
               </div>
 
-              <div class="dash-contenu h-[82vh] overflow-y-scroll bg-neutral-200 p-5 md:p-10 ">
+              <div class="dash-contenu h-[81vh] overflow-y-scroll bg-neutral-200 p-5 md:p-5 ">
 
                 <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-5 md:gap-y-10 max-md:max-auto">
                    

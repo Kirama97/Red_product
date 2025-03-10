@@ -25,7 +25,7 @@
             
             $nom = mysqli_real_escape_string($con, $_POST["nom"]);
             $email = mysqli_real_escape_string($con, $_POST["email"]);
-            $password = password_hash($_POST["password"], PASSWORD_DEFAULT); 
+            $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
             
           
             $req = mysqli_query($con, "SELECT * FROM user_admin WHERE email = '$email'");

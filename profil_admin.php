@@ -17,8 +17,15 @@
     if (mysqli_num_rows($requete) > 0) {
         $row = mysqli_fetch_assoc($requete);
     } else {
-        echo "<p class='text-red-500 text-xl'>Utilisateur non trouvé.</p>";
+       
+        header("Location: connexion.php");
         exit();
+        session_unset(); 
+        session_destroy(); 
+
+        header("Location: connexion.php");
+        exit();
+       
     }
 
 
@@ -45,11 +52,19 @@
     <link rel="stylesheet" href="http://localhost/Red_product/assiets/css/style.css">
     <title>Profil de <?php echo htmlspecialchars($row['nom']); ?></title>
 </head>
+
+
+ <style>
+    .volet {
+        display:none ;
+    }
+
+ </style>
 <body class="bg-gray-100">
 
 
         <?php if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])): ?>
-            <div class="alert flex gap-3  w-full items-center justify-center bg-red-500 border  border-red-400 text-white px-4 py-3 rounded relative mb-4">
+            <div class="alert flex gap-3 text-[12px] text-md  w-full items-center justify-center bg-red-500 border  border-red-400 text-white px-4 py-3 rounded relative mb-4">
                 <strong class="font-bold">Erreurs</strong>
                 <ul class="list-disc list-inside">
                     <?php foreach ($_SESSION['errors'] as $error): ?>
@@ -61,8 +76,8 @@
         <?php endif; ?>
 
         <?php if (isset($_SESSION['message'])): ?>
-            <div class=" alert bg-green-500 border text-center border-green-400 text-white px-4 py-3 rounded relative mb-4">
-                <strong class="font-bold"><?php echo $_SESSION['message']; ?></strong>
+            <div class=" alert bg-green-500 border text-center text-[12px] text-md border-green-400 text-white px-4 py-3 rounded relative mb-4">
+                <strong class="font-bold "><?php echo $_SESSION['message']; ?></strong>
             </div>
             <?php unset($_SESSION['message']); ?>
         <?php endif; ?>
