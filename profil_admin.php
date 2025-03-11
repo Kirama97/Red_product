@@ -1,6 +1,9 @@
 <?php
     session_start();
 
+    $profil_admin = true;
+
+
     include_once "config.php";
 
 
@@ -58,8 +61,12 @@
     .volet {
         display:none ;
     }
+    
+
+    
 
  </style>
+
 <body class="bg-gray-100">
 
 

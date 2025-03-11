@@ -9,6 +9,7 @@
 
 
     include_once("ajout_hotel.php");
+   
 
 
     if(!isset($_SESSION['nom'])) {
@@ -19,7 +20,39 @@
     $nom_utilisateur = $_SESSION['nom'];
 
 
+    include_once("modifier_hotel.php");
 
+
+
+    if (!isset($_SESSION['user_id'])) {
+      header("Location: connexion.php");
+      exit();
+  }
+
+  $id_utilisateur = $_SESSION['user_id'];
+
+
+  $requete = mysqli_query($con, "SELECT * FROM user_admin WHERE id = $id_utilisateur");
+
+  if (mysqli_num_rows($requete) > 0) {
+      $row = mysqli_fetch_assoc($requete);
+  } else {
+     
+      header("Location: connexion.php");
+      exit();
+      session_unset(); 
+      session_destroy(); 
+
+      header("Location: connexion.php");
+      exit();
+     
+  }
+
+
+
+    
+
+    
 
 ?>
 
@@ -62,7 +95,15 @@
           <?php include_once("header.php")
               ?>
 
+
           <div class="dash_bloc ">
+                        <?php 
+
+              if(isset($message)){
+                echo $message ;
+              }
+
+              ?>
               <div class="dash_bloc_titre flex justify-between items-center max-md:text-center h-[11vh] shadow-sm px-10 py-4">
                 <div class="flex items-center gap-3 bg-white p-2 rounded-lg">
                         <p class="text-sm text-amber-500 font-bold md:text-xl"><?php echo $nombre_hotels; ?></p>
@@ -124,10 +165,16 @@
                         </div>
 
                         <div class="plus_option absolute right-15 md:right-10 hidden top-2 gap-10 md:gap-5 items-center bg-neutral-100 px-5 py-2 rounded-2xl opacity-0 transition-opacity duration-300 ease-in-out">
-                            <img class="w-4 opacity-35 transition-transform duration-500 hover:scale-110 hover:opacity-70" src="http://localhost/Red_product/assiets/icone/edite.svg" alt="">
+                        
+                             
+                                    <img   data-id="<?= $row['id'] ?>"  class="modif_hotel w-4  md:w-3 opacity-35 transition-transform duration-500 hover:scale-110 hover:opacity-70"  src="http://localhost/Red_product/assiets/icone/edite.svg" alt="">
+                             
+                          
+                         
+                           
                             
                             <!-- Bouton suppression -->
-                            <img class="w-4 transition-transform duration-500 hover:scale-110 cursor-pointer delete-btn" 
+                            <img class="w-4  md:w-3 transition-transform duration-500 hover:scale-110 cursor-pointer delete-btn" 
                                 src="http://localhost/Red_product/assiets/icone/trash.svg" 
                                 data-id="<?= $row['id'] ?>" 
                                 alt="Supprimer">
@@ -143,7 +190,7 @@
                                  <div class=" flex items-center justify-center rounded-full my-3 md:my-5 p-2  animate-ping  border-1 border-red-500/25">
                                     <img class="w-4 md:w-5" src="http://localhost/Red_product/assiets/icone/triangle-alert.svg" alt="" srcset="">
                                  </div>
-                                <h1 class="text-[12px] md:text-sm font-bold mb-3 md:mb-4 text-neutral-200">Êtes-vous sûr de vouloir supprimer cet hôtel ?</h1>
+                                <h1 class="text-[12px] md:text-sm font-semibold mb-3 md:mb-4 text-neutral-200">Êtes-vous sûr de vouloir supprimer cet hôtel ?</h1>
                                 <div class="flex items-center justify-center gap-4 my-5">
                                      
                                     <a href="delete_hotel.php?id=<?= $row['id'] ?>" 
@@ -171,7 +218,9 @@
           
       </div>
 
-      <div class="pop_up   bg-black/50 z-100 ">
+      <!-- ajout hotel -->
+
+      <div class="pop_up  bg-black/50 z-100 ">
             
           <div class="modal   max-md:relative    bg-white w-full max-md:overflow-scroll max-md:h-[100lvh] md:w-[50%]  rounded-lg max-md:pt-20 max-md:px-5 md:p-10 ">
 
@@ -184,14 +233,15 @@
               </div>
 
               <div class="py-10">
+              <?php 
 
-                    <?php 
+                    if(isset($message)){
+                      echo $message ;
+                    }
 
-                     if(isset($message)){
-                       echo $message ;
-                     }
-                    
                     ?>
+
+                  
 
                     <form action=""  method="post" class="" enctype="multipart/form-data">
 
@@ -254,6 +304,93 @@
 
       </div>
 
+     
+      <!-- modifier hotel -->
+
+      <div  class="pop_up_modif hidden absolute   h-[100vh] w-[100vw] bg-black/50 z-100 ">
+            
+      <div class="modal_modif    max-md:relative m-auto md:mt-10  bg-white w-full max-md:overflow-scroll max-md:h-[100lvh] md:w-[50%]  rounded-lg max-md:pt-20 max-md:px-5 md:p-10 ">
+
+              
+      <div class="modal_top max-md:fixed max-md:top-0 z-80 max-md:w-full max-md:right-0 max-md:bg-white flex items-center max-md:shadow-md gap-4 py-5 max-md:px-5 md:border-b-1 md:border-dashed md:border-neutral-400">
+          <button class="retour_modif cursor-pointer "> 
+            <img class="w-5 md:w-7 " src="http://localhost/Red_product/assiets/icone/arrow-left_orange.svg" alt="" srcset="">
+          </button>
+          <h1 class="text-sm md:text-lg text-neutral-700 uppercase font-bold" >Modifier un  hôtel  </h1>
+      </div>
+
+      <div class="py-10">
+      <?php 
+
+            if(isset($message)){
+              echo $message ;
+            }
+
+            ?>
+
+          
+
+            <form action=""  method="post" class="" enctype="multipart/form-data">
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5">
+                  
+                  <div class="box_input flex flex-col gap-y-3">
+                    <label for="" class="text-neutral-700 text-[12px] md:text-sm">Nom de l'hotel</label>
+                    <input class="p-3 text-sm placeholder:text-[10px] md:placeholder:text-[12px] placeholder:text-neutral-400 border-1 border-neutral-400 rounded-xl"   type="text" placeholder="Hôtel" required name="nom_hotel">
+                  </div>
+
+                  <div class="box_input flex flex-col gap-y-3">
+                    <label for="" class="text-neutral-700 text-[12px] md:text-sm">Adresse</label>
+                    <input class="p-3 text-sm placeholder:text-[10px] md:placeholder:text-[12px] placeholder:text-neutral-400 border-1 border-neutral-400 rounded-xl" type="text" placeholder="Adresse" required name="adresse">
+                  </div>
+
+                  <div class="box_input flex flex-col gap-y-3">
+                    <label for="" class="text-neutral-700 text-[12px] md:text-sm">E-mail</label>
+                    <input class="p-3 text-sm placeholder:text-[10px] md:placeholder:text-[12px] placeholder:text-neutral-400 border-1 border-neutral-400 rounded-xl" type="email" placeholder="Mail de l'hotel" required name="email_hotel">
+                  </div>
+                  <div class="box_input flex flex-col gap-y-3">
+                    <label for="" class="text-neutral-700 text-[12px] md:text-sm">Numéro de téléphone</label>
+                    <input class="p-3 text-sm placeholder:text-[10px] md:placeholder:text-[12px] placeholder:text-neutral-400 border-1 border-neutral-400 rounded-xl" type="number" placeholder="+221............." required name="telephone">
+                  </div>
+
+                  <div class="box_input flex flex-col gap-y-3">
+                    <label for="" class="text-neutral-700 text-[12px] md:text-sm">Prix par nuit</label>
+                    <input class="p-3 text-sm placeholder:text-[10px] md:placeholder:text-[12px] placeholder:text-neutral-400 border-1 border-neutral-400 rounded-xl" type="number" placeholder="Tarif" required name="tarif">
+                  </div>
+                  <div class="box_input flex flex-col gap-y-3">
+                    <label for="" class="text-neutral-700 text-[12px] md:text-sm">Devise</label>
+                    <select name="devise" id="" class="py-3 px-3 text-[12px] md:text-sm  border-1 border-neutral-400 rounded-xl text-black">
+                    
+                      <option value="XOF" class="text-neutral-700 text-[12px] md:text-sm  bg-white">CFA (XOF)</option>
+                      <option value="$" class="text-neutral-700 text-[12px] md:text-sm bg-white">EURO ($)</option>
+                      <option value="€" class="text-neutral-700 text-[12px] md:text-sm bg-white">DOLLARD (€)</option>
+                    </select>
+
+                  
+                  </div>
+
+              </div>
+
+              <div class="box_input flex flex-col gap-y-3 py-5">
+                    <label for="" class="text-neutral-700 text-[12px] md:text-sm">Ajouter une photo</label>
+                    <input class="p-3 text-sm border-1 placeholder:text-[10px] md:placeholder:text-[12px] border-neutral-400 rounded-xl" type="file"  required name="photo_hotel">   
+
+
+              </div>
+
+              <button type="submit" name="enregistrer" class="bg-neutral-800 py-3 my-5 rounded-lg w-50 text-white cursor-pointer text-sm hover:bg-neutral-900 max-md:block m-auto md:float-end">Modifier</button>
+
+
+
+
+            </form>
+          
+      </div>
+
+      </div>
+
+      </div>
+
 
   </main>
 
@@ -297,6 +434,33 @@ retour_add.addEventListener("click", () => {
                 add_message.classList.add("opacity-0");
             }
         }, 3000);
+
+
+
+// pop up pour modif hotel
+
+
+// modif modal
+
+  document.querySelectorAll(".modif_hotel").forEach(button => {
+        button.addEventListener("click", function () {
+
+       
+            // let id = this.dataset.id;
+             document.querySelector(".pop_up_modif").classList.remove("hidden");
+        });
+    });
+
+
+
+    document.querySelectorAll(".retour_modif").forEach(button => {
+        button.addEventListener("click", function () {
+            this.closest(".pop_up_modif").classList.add("hidden");
+        });
+    });
+
+
+
 
 
 // option

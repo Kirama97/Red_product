@@ -49,7 +49,9 @@
 
                     </a>
                     <div class=" ">
-                    <p class="text-[12px] md:text-sm text-neutral-200 "><?php echo htmlspecialchars($nom_utilisateur); ?></p>
+                    <!-- <p class="text-[12px] md:text-sm text-neutral-200 ">
+                       
+                    </p> -->
                     <p class="flex gap-2 items-center text-[10px]  text-neutral-400"> <span class="rounded-full block w-2 h-2  bg-green-600"></span>en ligne </p>
 
                     </div>

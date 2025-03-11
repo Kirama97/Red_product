@@ -30,8 +30,11 @@ $page = basename($_SERVER['PHP_SELF']);
             } elseif  ($page == 'liste_hotel.php')  {
                 echo '<h1 class="text-md lg:text-md font-bold " >Liste des hôtels</h1>';
         
-            } else {
+            } elseif  ($page == 'profil_admin.php')  {
               echo '<a href="index.php" class="text-md lg:text-md font-bold " >Administrateur</a>';
+            } 
+             else{
+              echo '<a href="hotel_detail.php" class="text-md lg:text-md font-bold " >Hotel</a>';
             }
             ?>
                   
