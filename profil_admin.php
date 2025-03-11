@@ -71,7 +71,7 @@
 
 
         <?php if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])): ?>
-            <div class="alert flex gap-3 text-[12px] text-md  w-full items-center justify-center bg-red-500 border  border-red-400 text-white px-4 py-3 rounded relative mb-4">
+            <div class="alert flex gap-3 text-[12px]   w-full items-center justify-center bg-red-500 border  border-red-400 text-white px-4 py-3 rounded relative mb-4">
                 <strong class="font-bold">Erreurs</strong>
                 <ul class="list-disc list-inside">
                     <?php foreach ($_SESSION['errors'] as $error): ?>
@@ -83,7 +83,7 @@
         <?php endif; ?>
 
         <?php if (isset($_SESSION['message'])): ?>
-            <div class=" alert bg-green-500 border text-center text-[12px] text-md border-green-400 text-white px-4 py-3 rounded relative mb-4">
+            <div class=" alert bg-green-500 border text-center text-[12px]  border-green-400 text-white px-4 py-3 rounded relative mb-4">
                 <strong class="font-bold "><?php echo $_SESSION['message']; ?></strong>
             </div>
             <?php unset($_SESSION['message']); ?>

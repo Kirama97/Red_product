@@ -166,8 +166,14 @@
 
                         <div class="plus_option absolute right-15 md:right-10 hidden top-2 gap-10 md:gap-5 items-center bg-neutral-100 px-5 py-2 rounded-2xl opacity-0 transition-opacity duration-300 ease-in-out">
                         
-                             
-                                    <img   data-id="<?= $row['id'] ?>"  class="modif_hotel w-4  md:w-3 opacity-35 transition-transform duration-500 hover:scale-110 hover:opacity-70"  src="http://localhost/Red_product/assiets/icone/edite.svg" alt="">
+                     
+
+                                <a href="hotel_detail.php?id=<?php echo $row['id']; ?>">
+
+                                <img    class=" w-4  md:w-3 opacity-35 transition-transform duration-500 hover:scale-110 hover:opacity-70"  src="http://localhost/Red_product/assiets/icone/edite.svg" alt="">
+                               
+                                </a>
+                            
                              
                           
                          
@@ -305,92 +311,7 @@
       </div>
 
      
-      <!-- modifier hotel -->
-
-      <div  class="pop_up_modif hidden absolute   h-[100vh] w-[100vw] bg-black/50 z-100 ">
-            
-      <div class="modal_modif    max-md:relative m-auto md:mt-10  bg-white w-full max-md:overflow-scroll max-md:h-[100lvh] md:w-[50%]  rounded-lg max-md:pt-20 max-md:px-5 md:p-10 ">
-
-              
-      <div class="modal_top max-md:fixed max-md:top-0 z-80 max-md:w-full max-md:right-0 max-md:bg-white flex items-center max-md:shadow-md gap-4 py-5 max-md:px-5 md:border-b-1 md:border-dashed md:border-neutral-400">
-          <button class="retour_modif cursor-pointer "> 
-            <img class="w-5 md:w-7 " src="http://localhost/Red_product/assiets/icone/arrow-left_orange.svg" alt="" srcset="">
-          </button>
-          <h1 class="text-sm md:text-lg text-neutral-700 uppercase font-bold" >Modifier un  hôtel  </h1>
-      </div>
-
-      <div class="py-10">
-      <?php 
-
-            if(isset($message)){
-              echo $message ;
-            }
-
-            ?>
-
-          
-
-            <form action=""  method="post" class="" enctype="multipart/form-data">
-
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5">
-                  
-                  <div class="box_input flex flex-col gap-y-3">
-                    <label for="" class="text-neutral-700 text-[12px] md:text-sm">Nom de l'hotel</label>
-                    <input class="p-3 text-sm placeholder:text-[10px] md:placeholder:text-[12px] placeholder:text-neutral-400 border-1 border-neutral-400 rounded-xl"   type="text" placeholder="Hôtel" required name="nom_hotel">
-                  </div>
-
-                  <div class="box_input flex flex-col gap-y-3">
-                    <label for="" class="text-neutral-700 text-[12px] md:text-sm">Adresse</label>
-                    <input class="p-3 text-sm placeholder:text-[10px] md:placeholder:text-[12px] placeholder:text-neutral-400 border-1 border-neutral-400 rounded-xl" type="text" placeholder="Adresse" required name="adresse">
-                  </div>
-
-                  <div class="box_input flex flex-col gap-y-3">
-                    <label for="" class="text-neutral-700 text-[12px] md:text-sm">E-mail</label>
-                    <input class="p-3 text-sm placeholder:text-[10px] md:placeholder:text-[12px] placeholder:text-neutral-400 border-1 border-neutral-400 rounded-xl" type="email" placeholder="Mail de l'hotel" required name="email_hotel">
-                  </div>
-                  <div class="box_input flex flex-col gap-y-3">
-                    <label for="" class="text-neutral-700 text-[12px] md:text-sm">Numéro de téléphone</label>
-                    <input class="p-3 text-sm placeholder:text-[10px] md:placeholder:text-[12px] placeholder:text-neutral-400 border-1 border-neutral-400 rounded-xl" type="number" placeholder="+221............." required name="telephone">
-                  </div>
-
-                  <div class="box_input flex flex-col gap-y-3">
-                    <label for="" class="text-neutral-700 text-[12px] md:text-sm">Prix par nuit</label>
-                    <input class="p-3 text-sm placeholder:text-[10px] md:placeholder:text-[12px] placeholder:text-neutral-400 border-1 border-neutral-400 rounded-xl" type="number" placeholder="Tarif" required name="tarif">
-                  </div>
-                  <div class="box_input flex flex-col gap-y-3">
-                    <label for="" class="text-neutral-700 text-[12px] md:text-sm">Devise</label>
-                    <select name="devise" id="" class="py-3 px-3 text-[12px] md:text-sm  border-1 border-neutral-400 rounded-xl text-black">
-                    
-                      <option value="XOF" class="text-neutral-700 text-[12px] md:text-sm  bg-white">CFA (XOF)</option>
-                      <option value="$" class="text-neutral-700 text-[12px] md:text-sm bg-white">EURO ($)</option>
-                      <option value="€" class="text-neutral-700 text-[12px] md:text-sm bg-white">DOLLARD (€)</option>
-                    </select>
-
-                  
-                  </div>
-
-              </div>
-
-              <div class="box_input flex flex-col gap-y-3 py-5">
-                    <label for="" class="text-neutral-700 text-[12px] md:text-sm">Ajouter une photo</label>
-                    <input class="p-3 text-sm border-1 placeholder:text-[10px] md:placeholder:text-[12px] border-neutral-400 rounded-xl" type="file"  required name="photo_hotel">   
-
-
-              </div>
-
-              <button type="submit" name="enregistrer" class="bg-neutral-800 py-3 my-5 rounded-lg w-50 text-white cursor-pointer text-sm hover:bg-neutral-900 max-md:block m-auto md:float-end">Modifier</button>
-
-
-
-
-            </form>
-          
-      </div>
-
-      </div>
-
-      </div>
-
+      
 
   </main>
 
@@ -436,28 +357,6 @@ retour_add.addEventListener("click", () => {
         }, 3000);
 
 
-
-// pop up pour modif hotel
-
-
-// modif modal
-
-  document.querySelectorAll(".modif_hotel").forEach(button => {
-        button.addEventListener("click", function () {
-
-       
-            // let id = this.dataset.id;
-             document.querySelector(".pop_up_modif").classList.remove("hidden");
-        });
-    });
-
-
-
-    document.querySelectorAll(".retour_modif").forEach(button => {
-        button.addEventListener("click", function () {
-            this.closest(".pop_up_modif").classList.add("hidden");
-        });
-    });
 
 
 
