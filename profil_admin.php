@@ -95,18 +95,18 @@
     
 
     <main>
-        <section class="w-full  lg:h-screen justify-between items-center flex flex-col lg:flex-row  bg-[url(http://localhost/Red_product/assiets/images/red-bg.png)] bg-no-repeat bg-cover bg-center">
+        <section class="w-full  lg:h-screen bg-white justify-between  flex flex-col lg:flex-row   bg-no-repeat bg-cover bg-center">
             
        
-            <div class="w-full  lg:w-2/3 p-5 md:p-10">
-                <div class="w-full rounded-2xl bg-neutral-50/90 p-5 md:p-6">
-                    <div class="w-full bg-white rounded-xl py-5 md:py-10 mb-5 md:mb-6 text-center">
-                            <div class="w-20 md:w-25 h-20 md:h-25 mx-auto relative"> 
+            <div class="w-full lg:w-2/3 p-5 md:p-10">
+                <div class="w-full rounded-2xl  p-5 md:p-6">
+                    <div class="w-full shadow-lg  bg-[url(http://localhost/Red_product/assiets/images/red-bg.png)]  bg- rounded-xl py-5 md:py-10 mb-5 md:mb-6 text-center">
+                            <div class="w-20  md:w-25 h-20 md:h-25 mx-auto relative"> 
                             <?php
                              $photo_profil = !empty($_SESSION['profil']) ? "assiets/image_profil/" . $_SESSION['profil'] : "assiets/images/default.jpg";
                             ?>
           
-                            <img class=" rounded-full w-full h-full object-cover"  src="<?php echo $photo_profil; ?>" alt="Photo de profil">
+                            <img class=" rounded-full shadow-lg shadow-neutral-500 w-full h-full object-cover"  src="<?php echo $photo_profil; ?>" alt="Photo de profil">
                             <a class="absolute bottom-2 md:bottom-0 right-0 w-5 md:w-10 h-5 md:h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:bg-neutral-800 transition">
                                 <img src="http://localhost/Red_product/assiets/icone/camera.svg" alt="Modifier">
                             </a>
@@ -114,12 +114,36 @@
                         <h3 class="text-neutral-600 text-md md:text-md font-bold mt-5">Photo de profil</h3>
                     </div>
 
-                    <div class="bg-white w-full p-5 rounded-2xl">
-                        <h1 class="uppercase text-center font-bold text-md md:text-xl"><?php echo htmlspecialchars($row['nom']); ?></h1>
-                        <p class="text-center my-5 flex items-center justify-center gap-3">
-                            <img class="w-4 md:w-8" src="http://localhost/Red_product/assiets/icone/mail_orange.svg" alt="">
-                            <span><?php echo htmlspecialchars($row['email']); ?></span>
-                        </p>
+                    <div class=" w-full p-5 rounded-2xl">
+                        <h1 class="uppercase text-center font-bold text-md md:text-xl text-amber-500"><?php echo htmlspecialchars($row['nom']); ?></h1>
+
+                        <div class="w-full grid grid-cols-2    gap-3 sm:gap-5  py-15">
+
+                   
+
+
+                            <div class="h-20 bg-[url('http://localhost/Red_product/assiets/images/boite_lettre.jpeg')] bg-cover  bg-center rounded-lg p-2 flex gap-3 flex-col items-center">
+
+                                <img class="w-7" src="http://localhost/Red_product/assiets\icone\mail_detail.svg" alt="" srcset="">
+
+                                <p class="text-white text-center text-[12px] md:text-sm"><?php echo htmlspecialchars($row['email']); ?></p>
+
+                            </div>
+
+
+                            <div class="h-20 bg-[url('http://localhost/Red_product/assiets/images/cabine_telephone.jpg')] bg-cover  bg-center rounded-lg p-2 flex gap-3 flex-col items-center">
+
+                                <img class="w-7" src="http://localhost/Red_product/assiets\icone\telephone.svg" alt="" srcset="">
+
+                                <p class="text-white text-center text-[12px] md:text-sm">No disponible</p>
+
+                            </div>
+
+
+        
+
+                      </div>
+                       
 
                         <div class="">
                             <p class="text-neutral-700 text-sm/5  md:text-md/10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, aliquid? Aliquid in rerum odit consequuntur et, earum nesciunt minus, porro aliquam error cum vel, voluptatem perspiciatis aperiam tenetur maxime atque.
@@ -131,11 +155,13 @@
                 </div>
             </div>
 
+
+
             <div class="w-full  lg:w-1/3 flex items-center justify-center max-lg:p-5">
 
              
 
-                <div class="w-full lg:w-[80%] bg-white rounded-2xl shadow-lg p-5 md:p-10">
+                <div class="w-full lg:w-[80%] bg-white rounded-2xl shadow-sm p-5 md:p-10">
                     <h1 class=" text-md md:text-md font-bold max-md:text-center">Modifier son profil</h1>
                     <form method="post"  class="flex flex-col gap-3 py-5"  enctype="multipart/form-data">
                         <input class="w-full py-2 border-b  text-sm outline-none max-md:placeholder:text-sm placeholder:text-[12px]  border-neutral-300"  value="<?php echo htmlspecialchars($row['nom']); ?>" type="text" name="nom" placeholder="nom" >

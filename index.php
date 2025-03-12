@@ -41,7 +41,26 @@ if (!isset($_SESSION['nom'])) {
     <link rel="stylesheet" href="http://localhost/Red_product/assiets/css/style.css">
     <title>Dashboard</title>
 
-   
+    <style>
+
+
+.dash-contenu::-webkit-scrollbar {
+    color: black;
+    width: 3px;
+ }
+ 
+ .dash-contenu::-webkit-scrollbar-track {
+     background-color: rgba(255, 255, 255, 0.349);
+    
+ }
+ 
+ .dash-contenu::-webkit-scrollbar-thumb {
+    background-color: #de8912;
+    width: 5px;
+    border-radius: 5px;
+ }
+
+</style> 
 
 </head>
 

@@ -49,9 +49,11 @@
 
                     </a>
                     <div class=" ">
-                    <!-- <p class="text-[12px] md:text-sm text-neutral-200 ">
-                       
-                    </p> -->
+
+                    <p class="text-[12px] text-neutral-200 ">
+                    <?php echo $_SESSION['nom']; ?>
+                    </p> 
+                    
                     <p class="flex gap-2 items-center text-[10px]  text-neutral-400"> <span class="rounded-full block w-2 h-2  bg-green-600"></span>en ligne </p>
 
                     </div>
@@ -102,33 +104,3 @@
  
  
  
- 
- 
- 
- 
- 
- <!-- <div class="slide_top">
-
-<div class="flex gap-3  items-center p-5 ">
-  <img class="w-4 xl:w-6" src="http://localhost/Red_product/assiets/icone/Link → SVG.png" alt="" srcset="">
-  <h1 class="text-white text-sm xl:text-md font-bold">RED PRODUCT</h1> 
-</div>
-
-<div >
-
-<p class="p-5 text-neutral-400">Principal</p>
-
-<nav >
-    <a href="index.php"  class="flex gap-3 px-5 py-3 w-full"> 
-    <img class="w-5" src="http://localhost/Red_product/assiets/icone/layout-dashboard.svg" alt="" srcset="">
-    <span class="text-sm ">Dashboard</span>
-    </a>
-
-    <a href="liste_hotel.php" class="flex gap-3 px-5 py-3  w-full"> 
-    <img class="w-5" src="http://localhost/Red_product/assiets/icone/liste_hotel_icone.svg" alt="" srcset="">
-    <span class="text-sm ">Liste des hotels</span>
-    </a>
-</nav>
-</div>
-
-</div> -->

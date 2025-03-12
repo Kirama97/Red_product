@@ -79,6 +79,28 @@
 </head>
 
 
+<style>
+
+
+.dash-contenu::-webkit-scrollbar {
+    color: black;
+    width: 3px;
+ }
+ 
+ .dash-contenu::-webkit-scrollbar-track {
+     background-color: rgba(255, 255, 255, 0.349);
+    
+ }
+ 
+ .dash-contenu::-webkit-scrollbar-thumb {
+    background-color: #de8912;
+    width: 5px;
+    border-radius: 5px;
+ }
+
+</style>
+
+
 <body  class="h-screen overflow-hidden ">
 
 
@@ -278,11 +300,12 @@
                           </div>
                           <div class="box_input flex flex-col gap-y-3">
                             <label for="" class="text-neutral-700 text-[12px] md:text-sm">Devise</label>
-                            <select name="devise" id="" class="py-3 px-3 text-[12px] md:text-sm  border-1 border-neutral-400 rounded-xl text-black">
+                            <select name="devise" id="" class="py-3 px-3  text-[12px] md:text-sm  border-1 border-neutral-400 rounded-xl text-black">
                             
-                              <option value="XOF" class="text-neutral-700 text-[12px] md:text-sm  bg-white">CFA (XOF)</option>
-                              <option value="$" class="text-neutral-700 text-[12px] md:text-sm bg-white">EURO ($)</option>
-                              <option value="€" class="text-neutral-700 text-[12px] md:text-sm bg-white">DOLLARD (€)</option>
+                              <option value="XOF" class="text-neutral-700 text-[12px]  md:text-sm  bg-white">CFA (XOF)</option>
+                              <option value="$" class="text-neutral-700 text-[12px]  md:text-sm bg-white">EURO ($)</option>
+                              <option value="€" class="text-neutral-700 text-[12px]  md:text-sm bg-white">DOLLARD (€)</option>
+
                             </select>
 
                           
