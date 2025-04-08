@@ -82,21 +82,28 @@
 <style>
 
 
-.dash-contenu::-webkit-scrollbar {
+.dash-contenu::-webkit-scrollbar
+,.modal::-webkit-scrollbar {
     color: black;
-    width: 3px;
+    width: 4px;
  }
  
- .dash-contenu::-webkit-scrollbar-track {
+ .dash-contenu::-webkit-scrollbar-track 
+ ,.modal::-webkit-scrollbar {
      background-color: rgba(255, 255, 255, 0.349);
     
  }
  
- .dash-contenu::-webkit-scrollbar-thumb {
+ .dash-contenu::-webkit-scrollbar-thumb 
+ ,.modal::-webkit-scrollbar {
     background-color: #de8912;
     width: 5px;
     border-radius: 5px;
  }
+
+
+
+
 
 </style>
 
@@ -250,7 +257,7 @@
 
       <div class="pop_up  bg-black/50 z-100 ">
             
-          <div class="modal   max-md:relative    bg-white w-full max-md:overflow-scroll max-md:h-[100lvh] md:w-[50%]  rounded-lg max-md:pt-20 max-md:px-5 md:p-10 ">
+          <div class="modal   max-md:relative    bg-white w-full max-md:overflow-y-scroll max-md:h-[100lvh] md:w-[50%]  rounded-lg max-md:pt-20 max-md:px-5 md:p-10 ">
 
               
               <div class="modal_top max-md:fixed max-md:top-0 z-80 max-md:w-full max-md:right-0 max-md:bg-white flex items-center max-md:shadow-md gap-4 py-5 max-md:px-5 md:border-b-1 md:border-dashed md:border-neutral-400">

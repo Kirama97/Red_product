@@ -11,13 +11,6 @@ mysqli_set_charset($con, "utf8");
 
 
 
-
-
-
-
-
-
-
 $result = mysqli_query($con, "SELECT COUNT(*) AS total FROM user");
 $data = mysqli_fetch_assoc($result);
 $nombre_user = $data['total'];
